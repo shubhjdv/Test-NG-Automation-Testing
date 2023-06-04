@@ -1,0 +1,535 @@
+package testNGproject;
+
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class Kiranacademyproject {
+
+	@Test(priority=1)   //1
+	public void url() // to test url functionality
+	{
+        WebDriver driver = new ChromeDriver();
+		
+		String url ="file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/index.html";
+				driver.get(url);
+				
+				
+		String URL =driver.getCurrentUrl();
+		System.out.println(URL);
+		
+		Assert.assertEquals(URL, "file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/index.html");
+	
+	}
+	        // 1 new mwmbwe scenario
+	@Test(priority=2)  //2  new membership TC2
+	public void registernewmember()
+	{
+        WebDriver driver1=new ChromeDriver();
+		
+		driver1.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/index.html");
+		
+		WebElement registeranewmembership = driver1.findElement(By.xpath("/html/body/div/div[2]/a"));
+		registeranewmembership.click();
+		
+		Assert.assertEquals(registeranewmembership,registeranewmembership );
+		
+		WebElement name = driver1.findElement(By.xpath("/html/body/div/div[2]/form/div[1]/input"));
+		name.sendKeys("shubham jadhav");
+		
+		Assert.assertEquals(name , name );
+		
+		WebElement mobile = driver1.findElement(By.xpath("/html/body/div/div[2]/form/div[2]/input"));
+		mobile.sendKeys("9156060665");
+		Assert.assertEquals(mobile, mobile);
+		
+		WebElement email = driver1.findElement(By.xpath("/html/body/div/div[2]/form/div[3]/input"));
+		email.sendKeys("sjmail.com");
+		Assert.assertEquals(email, email);
+		
+		WebElement password = driver1.findElement(By.xpath("/html/body/div/div[2]/form/div[4]/input"));
+		password.sendKeys("123456");
+		
+		Assert.assertEquals(password, password);
+		
+		WebElement button = driver1.findElement(By.xpath("/html/body/div/div[2]/form/div[5]/div/button"));
+		button.click();
+		
+		Alert alert = driver1.switchTo().alert();
+		System.out.println(alert.getText());
+		alert.accept();
+
+	}
+	           //2 login scenario
+	@Test(priority=3)     //3   TC7login functionality
+	public void login()
+	{
+		 WebDriver driver = new ChromeDriver();
+		 
+		 String url ="file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/index.html";
+			driver.get(url);
+			
+			 WebElement emailid = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[1]/input"));
+			 emailid.sendKeys("kiran@gmail.com");
+			 
+			 Assert.assertEquals(emailid, emailid);
+			 
+			 WebElement passwordd = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[2]/input"));
+			 passwordd.sendKeys("123456");
+			 
+			 Assert.assertEquals(passwordd, passwordd);
+			 
+			 WebElement signin = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[3]/div/button"));
+			 signin.click();
+	}
+	        // 3 user scenario
+	@Test(priority=4)  //4  TC16- to test click in user button - users list should open
+	public void user() 
+	{
+		WebDriver driver=new ChromeDriver();
+		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/index.html");
+		
+		 WebElement emailid = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[1]/input"));
+		 emailid.sendKeys("kiran@gmail.com");
+		 
+		 Assert.assertEquals(emailid, emailid);
+		 
+		 WebElement passwordd = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[2]/input"));
+		 passwordd.sendKeys("123456");
+		 
+		 Assert.assertEquals(passwordd, passwordd);
+		 
+		 WebElement signin = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[3]/div/button"));
+		 signin.click();
+		 
+		 
+		 WebElement users = driver.findElement(By.xpath("/html/body/div/aside/section/ul/li[3]/a/span"));
+		 users.click();
+	}
+	
+	@Test(priority=5) //5 TC17- to test when click in add users "fill below detail" page should open
+	public void adduser()
+	{
+		WebDriver driver=new ChromeDriver();
+		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/users.html");
+		
+		
+		 
+		WebElement adduser = driver.findElement(By.xpath("/html/body/div[1]/div[1]/section[2]/div/div/div/div[1]/a/button"));
+		adduser.click();
+		
+	
+		
+		
+		
+	}
+   
+	
+	
+	     @Test(priority=6)  //6  TC18- to test when we fill valid details and click in submit button-you added succesfully message should display
+		public void filldetail()
+		{
+			WebDriver driver=new ChromeDriver();
+			driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/users.html");
+			
+			WebElement adduser = driver.findElement(By.xpath("/html/body/div[1]/div[1]/section[2]/div/div/div/div[1]/a/button"));
+			adduser.click();
+			
+			WebElement addusername = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/form/div[1]/div[1]/div/input"));
+			addusername.sendKeys("shubham jadhav");
+			Assert.assertEquals(addusername, addusername);
+			
+			WebElement addmobile = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/form/div[1]/div[2]/div/input"));
+			addmobile.sendKeys("8668775776");
+			Assert.assertEquals(addmobile, addmobile);
+					
+			WebElement addemail = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/form/div[1]/div[3]/div/input"));
+			addemail.sendKeys("s.d.jadhav@gmail.com");
+			Assert.assertEquals(addemail, addemail);
+					
+			WebElement courses = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/form/div[1]/div[4]/div/input"));
+			courses.sendKeys("java");
+			Assert.assertEquals(courses, courses);
+			
+			WebElement gender = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/form/div[1]/div[5]/div/input[1]"));
+			gender.click();
+			Assert.assertEquals(gender, gender);
+			
+			WebElement maharashtra = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/form/div[1]/div[6]/div/select"));
+			maharashtra.sendKeys("Maharashtra");
+			Assert.assertEquals(maharashtra, maharashtra);
+			
+			WebElement password = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/form/div[1]/div[7]/div/input"));
+			password.sendKeys("123456");
+			Assert.assertEquals(password, password);
+			
+			WebElement submituser=driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/form/div[2]/button"));
+			submituser.click();
+			
+			
+			Alert alert=driver.switchTo().alert();
+			System.out.println(alert.getText());
+			alert.accept();
+			
+		}
+	            // 4 operator scenario
+	     @Test(priority=7) //7 TC19- to test when click in operator button -operator list should open
+	     public void operator()
+	     {
+	    	 
+
+				WebDriver driver=new ChromeDriver();
+				driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/index.html");
+				
+				 WebElement emailid = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[1]/input"));
+				 emailid.sendKeys("kiran@gmail.com");
+				 
+				 Assert.assertEquals(emailid, emailid);
+				 
+				 WebElement passwordd = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[2]/input"));
+				 passwordd.sendKeys("123456");
+				 
+				 Assert.assertEquals(passwordd, passwordd);
+				 
+				 WebElement signin = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[3]/div/button"));
+				 signin.click();
+				 
+	    	 WebElement operators = driver.findElement(By.xpath("/html/body/div/aside/section/ul/li[4]/a"));
+			 operators.click();
+			 
+			
+	   
+	     }	 
+	            //5 usefullink scenario
+	     @Test(priority=8) //8 TC20- to test when click in" useful links "button- display useful links  
+	     public void usefulllink()
+	     {
+
+				WebDriver driver=new ChromeDriver();
+				driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/index.html");
+				
+				 WebElement emailid = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[1]/input"));
+				 emailid.sendKeys("kiran@gmail.com");
+				 
+				 Assert.assertEquals(emailid, emailid);
+				 
+				 WebElement passwordd = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[2]/input"));
+				 passwordd.sendKeys("123456");
+				 
+				 Assert.assertEquals(passwordd, passwordd);
+				 
+				 WebElement signin = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[3]/div/button"));
+				 signin.click();
+				 
+				WebElement usefullink = driver.findElement(By.xpath("/html/body/div/aside/section/ul/li[5]/a/span"));
+				 usefullink.click();
+				 
+			
+	     }
+	     
+	     @Test(priority=9) // 9   TC21- to test when click in first" schedule" links go button- links page should open
+	     public void linkschedule()
+	     {
+	    		WebDriver driver=new ChromeDriver();
+				driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/links.html");
+				
+			
+			
+				 WebElement schedule = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[2]/td[3]/a/span"));
+				 schedule.click();
+				 
+				
+	     }
+	     @Test(priority=10) //10  TC22- to test when click in go button of "Video Lactures All Topics"-link page should open
+	    public void videoalltopics()
+	    {
+	    	 WebDriver driver=new ChromeDriver();
+				driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/links.html");
+				
+				 WebElement videolecture = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[3]/td[3]/a/span"));
+				 videolecture.click();
+				 
+	    }
+	     @Test(priority=11) //11 TC23- to test when click in go button of "Selenium Interview Questions"-link page should open
+	     public void seleniuminterviewquestion()
+	     {
+	    	 WebDriver driver=new ChromeDriver();
+				driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/links.html");
+				
+				 WebElement seleniuninterview = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[4]/td[3]/a/span"));
+				 seleniuninterview .click();
+				 
+	     }
+	     @Test(priority=12) //12 TC24- to test when click in go button of"Java Interview Questions"- link page should open
+          public void javainterviewquestion()
+          {
+	    	 WebDriver driver=new ChromeDriver();
+				driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/links.html");
+				
+				 WebElement javainterview  = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[5]/td[3]/a/span"));
+				 javainterview.click();
+				 
+          }
+	     
+	     @Test(priority=13) //13  TC25- to test when click in go button of "Courses"- link page should open
+          public void courses()
+          {
+	    	 WebDriver driver=new ChromeDriver();
+				driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/links.html");
+				
+				 WebElement courses = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[6]/td[3]/a/span"));
+		
+				 courses.click();
+				 
+          }
+	     
+	     @Test(priority=14) //14  TC26- to test when click in go button of "Placement"- link page should open
+         public void placement()
+         {
+	    	 WebDriver driver=new ChromeDriver();
+				driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/links.html");
+				
+				 WebElement placement = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[7]/td[3]/a/span"));
+				 placement.click();
+				 
+         } 
+	            //6 download scenario
+	     @Test(priority=15) //15 TC27- to test when click in" downloads "button- downloads list sould display
+         public void download()
+         {
+	    	 WebDriver driver=new ChromeDriver();
+	 		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/index.html");
+	 		
+	 		 WebElement emailid = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[1]/input"));
+	 		 emailid.sendKeys("kiran@gmail.com");
+	 		 
+	 		 Assert.assertEquals(emailid, emailid);
+	 		 
+	 		 WebElement passwordd = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[2]/input"));
+	 		 passwordd.sendKeys("123456");
+	 		 
+	 		 Assert.assertEquals(passwordd, passwordd);
+	 		 WebElement signin = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[3]/div/button"));
+	 		 signin.click();
+	 		 
+	 		 WebElement downloads = driver.findElement(By.xpath("/html/body/div/aside/section/ul/li[6]/a/span"));
+	 		 downloads.click();
+         }
+	     @Test(priority=16) //16  TC28- to test when click "official website" button of "Java Development Kit (JDK)"-next page should open
+          public void jdk()
+          {
+	    	 WebDriver driver=new ChromeDriver();
+		 		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/downloads.html");
+		 		
+		 		 
+				 WebElement jdk = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[2]/td[8]/a/span"));
+				 jdk.click();
+				 
+          }
+	     @Test(priority=17) //17 TC29- to test when click "official website" button of "Selenium Server Standalon Jar"-next page should open
+	     public void standalone()
+	     {
+	    	 WebDriver driver=new ChromeDriver();
+		 		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/downloads.html");
+		 		
+		 		 WebElement standalone = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[3]/td[8]/a/span"));
+				 standalone.click();
+				 
+	    	 
+	     }
+	     
+	     @Test(priority=18) //18 TC30- to test when click "official website" button of "Selenium Server Source Jar"-next page should open
+          public void sourcejar()
+          {
+
+	    	 WebDriver driver=new ChromeDriver();
+		 		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/downloads.html");
+		 		
+		 		 WebElement sourcejar = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[4]/td[8]/a/span"));
+				 sourcejar .click();
+				 
+          }
+	     
+	     @Test(priority=19) //19  TC31- to test when click "official website" button of "Google Chrome"-next page should open
+         public void chrome()
+         {
+	    	 WebDriver driver=new ChromeDriver();
+		 		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/downloads.html");
+		 		
+		 		 WebElement googlechrome = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[5]/td[8]/a/span"));
+				 googlechrome.click();
+				 
+         }
+	     
+	     @Test(priority=20) //20 TC32- to test when click "official website" button of "Google Chrome driver"-next page should open
+          public void chromedriver()
+          {
+	    	 WebDriver driver=new ChromeDriver();
+		 		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/downloads.html");
+		 		
+		 		 WebElement chromedriver = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[6]/td[8]/a/span"));
+				 chromedriver.click();
+				 
+          }
+	     
+	     @Test(priority=21) //21 TC33- to test when click "official website" button of "Mozilla Firefox"-next page should open
+         public void firefox()
+         {
+	    	 WebDriver driver=new ChromeDriver();
+		 		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/downloads.html");
+		 		
+		 		 WebElement firefox = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[7]/td[8]/a/span"));
+				 firefox.click();
+				
+         }
+	     
+	     @Test(priority=22) //22  TC34- to test when click "official website" button of "Gecko Driver for Latest firefox"-next page should open
+         public void Geckodrive()
+         {
+	    	 WebDriver driver=new ChromeDriver();
+		 		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/downloads.html");
+		 		
+		 		 WebElement firefoxdriver = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div/div/div[2]/table/tbody/tr[8]/td[8]/a/span"));
+				 firefoxdriver.click();
+				 
+         }
+
+	 	
+		//    @Test(priority=32)  //23   TC35- to test when click in dashboard button -courses offered should display
+	    //     	public void dashboard()
+		//	{
+		   // 	 WebDriver driver = new ChromeDriver();
+				 
+			//	 String url ="file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/index.html";
+			//		driver.get(url);
+					
+			//		 WebElement emailid = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[1]/input"));
+			//		 emailid.sendKeys("kiran@gmail.com");
+					 
+			//		 Assert.assertEquals(emailid, emailid);
+					 
+			//		 WebElement passwordd = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[2]/input"));
+			//		 passwordd.sendKeys("123456");
+					 
+			//		 Assert.assertEquals(passwordd, passwordd);
+					 
+			//		 WebElement signin = driver.findElement(By.xpath("/html/body/div/div[2]/form/div[3]/div/button"));
+			//		 signin.click();
+			
+			//	driver.close();
+					 
+				
+		//}
+		   
+		    @Test(priority=24)  //24  TC36- to test when click in "selenium" and click "more info" button-selenium syllabus should display
+		    public class Hselenium {
+
+		    	public void seleniumtesting()
+		    	{
+		    		WebDriver driver=new ChromeDriver();
+		     		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/dashboard.html");
+		     		
+		     		WebElement seleniumtesting = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div[1]/div/a"));
+		    			seleniumtesting.click();
+		    		 
+		     		Assert.assertEquals(seleniumtesting,seleniumtesting);
+		    	}
+		    	@Test(priority=25) //25 "TC37- to test when click in ""Selenium
+		    	                   //          Automation Testing"" download button- syllabus pdf file download succesfully"
+
+		    	public void downloadselenium()
+		    	{
+		    		WebDriver driver = new ChromeDriver();
+		    		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/dashboard.html");
+		    		
+		     		WebElement seleniumtesting = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div[1]/div/a"));
+		    			seleniumtesting.click();
+		    		 
+		     		Assert.assertEquals(seleniumtesting,seleniumtesting);
+		     		
+		     		//WebElement download = driver.findElement(By.xpath("/html/body/pdf-viewer//viewer-toolbar//div/div[3]/viewer-download-controls//cr-icon-button//div/iron-icon"));
+		     	//	download.click();
+		     		
+		    	}
+		    }
+		    @Test(priority=26)   //26   TC38- to test when click in " Java / J2EE Software Development" and click "more info" button-Java / J2EE syllabus should display
+		    public void java() {
+		      WebDriver driver = new ChromeDriver();
+		      driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/dashboard.html");
+		     
+		      WebElement javaj2ee = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div[2]/div/a"));
+		      javaj2ee.click();
+		      
+		      Assert.assertEquals(javaj2ee, javaj2ee);
+		    	}
+		        
+		        @Test(priority=27)   //27   TC39- to test when click in " Java / J2EE syllabus" download button- syllabus pdf file download succesfully
+
+		        public void javadownload()
+		        {
+		        	 WebDriver driver = new ChromeDriver();
+		        	  driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/dashboard.html");
+		        	 
+		        	  WebElement javaj2ee = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div[2]/div/a"));
+		        	  javaj2ee.click();
+		        	  
+		        	  Assert.assertEquals(javaj2ee, javaj2ee);
+
+		        	 // WebElement javadownload = driver.findElement(By.xpath(""));
+		        	  //	javadownload.click();
+		        	
+		        }
+		        @Test(priority=28)  //28   //TC40- to test when click in " python" and click "more info" button-python syllabus should display
+
+		    	public void python()
+		    	{
+		    		WebDriver driver=new ChromeDriver();
+		     		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/dashboard.html");
+		     		
+		     		WebElement python = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div[3]/div/a"));
+		    			python.click();
+		    			Assert.assertEquals(python, python);
+		    	}
+		    	@Test(priority=29)  //29 TC41- TC40- to test when click in " python" download button - python syllabus pdf file download succesfully
+
+		    	public void pythondl()
+		    	{
+		    		WebDriver driver=new ChromeDriver();
+		     		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/pdf/python-syllabus.pdf");
+		     		
+		     		//WebElement pythondl = driver.findElement(By.xpath("/html/body/pdf-viewer//viewer-toolbar//div/div[3]/viewer-download-controls//cr-icon-button//div/iron-icon"));
+		     		//pythondl.click();
+		     		
+		    	}
+		    	@Test(priority=30)   //30  TC42- to test when click in " php" and click "more info" button- dashboard should open
+
+		    	public void php()
+		    	{
+		    		WebDriver driver=new ChromeDriver();
+		     		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/dashboard.html");
+		     		
+		     		WebElement php = driver.findElement(By.xpath("/html/body/div/div[1]/section[2]/div/div[4]/div/a"));
+		    			php.click();
+		    			Assert.assertEquals(php, php);
+		    	}
+		    	@Test(priority=31)  //31 TC43- to test when click in "logout" button -logout successfully
+
+		    	public void logout()
+		    	{
+		    		WebDriver driver=new ChromeDriver();
+		     		driver.get("file:///C:/shubham%20eclipse/selenium/Selenium%20Softwares/Selenium%20Softwares/Offline%20Website/pages/examples/dashboard.html");
+		     		
+		     		
+		     		WebElement logout = driver.findElement(By.xpath("/html/body/div/aside/section/ul/li[7]/a/span"));
+		     		logout.click();
+		    	}
+		    	
+	
+}
+
